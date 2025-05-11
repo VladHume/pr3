@@ -45,4 +45,62 @@ sudo -i
 ```
 ![image](https://github.com/user-attachments/assets/b7d52d7d-78c2-41c7-9d98-1a4f103524e8)
 
+### Перевірка з root правами
+![image](https://github.com/user-attachments/assets/ced79532-51cc-4d17-9e87-b27e4b144f0f)
+
+## Завдання 3.2
+При спробі виконати 
+```bash
+perf stat ls
+```
+видається попередження, 
+```
+perf command not found for kernel 6.8.0-59
+```
+Це означає, що утиліта встановлена, проте не сумісна з ядром, для виправлення необхідно встановити відповідну версію linux-tools
+```bash
+apt install -y linux-tools-6.8.0-59-generic
+
+```
+![image](https://github.com/user-attachments/assets/895efd65-847c-4d4d-8dbe-8fa173117956)
+Це повідомлення означає, що користувач не має прав для запуску perf, бо ця утиліта потребує доступу до низькорівневих подій ядра.
+Щоб виправити це, запустимо контейнер з розширеними привілеями
+```bash
+docker run --rm -it --privileged pr3env
+```
+#### Результат виконання 
+```bash
+perf stat ls
+```
+![image](https://github.com/user-attachments/assets/731e80d6-30dd-4e4b-b66c-7dfd281deb83)
+
+##### При написанні докерфайлу не передбачив завантаження редактора nano та компілятора gcc тому дозавантажую походу
+Створимо файл infinite.c
+```c
+#include <stdio.h>
+int main(){
+    while(1);
+    return 0;
+}
+```
+Скомпілюємо
+```bash
+gcc -o infinite infinite.c
+```
+Запустимо з perf
+```bash
+perf stat ./infinite
+```
+Цього разу контейнер був запущений без вказаних лімітних обмежень, тому програма триватиме вічно, поки ми не зупинимо процес, після примусового завершення процесу отримуємо:
+![image](https://github.com/user-attachments/assets/f6d8e98c-95dc-4ead-ac37-c2501f9e7743)
+
+## Завдання 3.3
+```bash
+ulimit -f 1  # ліміт 1 блок = 512 байт
+```
+
+
+
+
+
 
