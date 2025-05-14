@@ -99,6 +99,64 @@ perf stat ./infinite
 ulimit -f 1  # ліміт 1 блок = 512 байт
 ```
 
+Скомпілюємо
+```bash
+gcc -Wall -o dice dice.c
+```
+
+### Результат
+![image](https://github.com/user-attachments/assets/a81ea0d5-dbf5-42a9-9c4a-3d30d791f401)
+
+### Вміст dice.log
+![image](https://github.com/user-attachments/assets/5b348ec1-6ff4-45a8-ab89-11e452e3b244)
+
+## Завдання 3.4
+```bash
+ulimit -t 1 # max CPU time
+```
+
+Скомпілюємо
+```bash
+gcc -Wall -o lottery lottery.c
+```
+### Результат
+![image](https://github.com/user-attachments/assets/20614a2d-df23-4907-9e84-c60203035137)
+
+## Завдання 3.5
+
+## Завдання 3.6
+```bash
+ulimit -s 64 # stack size
+```
+
+Скомпілюємо
+```bash
+gcc -Wall -o stack stack.c
+```
+
+### Результат
+![image](https://github.com/user-attachments/assets/c51e0a7e-3e12-49ed-8abf-47a586e73ee0)
+
+### Для порівняння результат без лімітів
+![image](https://github.com/user-attachments/assets/d1ac8aff-ad60-45fc-8f5f-9ea8c1322e03)
+
+## Завдання 3.7
+```bash
+ulimit -u 10 # max processes
+```
+### Скомпілюємо
+```bash
+gcc -Wall -o processes processes.c
+```
+
+### Результат
+![image](https://github.com/user-attachments/assets/34cc2304-e10f-43a6-be52-5b06bfdf0905)
+
+
+
+
+
+
 
 
 
