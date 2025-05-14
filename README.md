@@ -123,6 +123,23 @@ gcc -Wall -o lottery lottery.c
 ![image](https://github.com/user-attachments/assets/20614a2d-df23-4907-9e84-c60203035137)
 
 ## Завдання 3.5
+### Створимо маленький файл
+```bash
+echo "Test" > source.txt
+```
+Скомпілюємо та запустимо
+```bash
+gcc -Wall -o copy copy.c
+./copy source.txt dest.txt
+```
+Все спрацювало
+Тепер перевіримо обробку на перебільшення розміру файлу
+Встановимо ліміт
+```bash
+ulimit -f 1
+```
+### Результат
+![image](https://github.com/user-attachments/assets/8f3a095e-b885-4717-82fe-3bdb40b30a8f)
 
 ## Завдання 3.6
 ```bash
